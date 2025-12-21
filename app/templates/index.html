@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Travel Planner ✈️</h2>
+    
+    <div class="card card-body mb-4">
+        <form method="POST" class="row g-3">
+            <div class="col-md-4">
+                <input type="text" name="city" class="form-control" placeholder="Enter City (e.g. London)" required>
+            </div>
+            <div class="col-md-4">
+                <input type="date" name="date" class="form-control" required >
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary w-100">Check Weather & Save</button>
+            </div>
+        </form>
+    </div>
+
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <th>City</th>
+            <th>Date</th>
+            <th>Weather</th>
+            <th>Advice</th>
+            <th>Actions</th> </tr>
+    </thead>
+    <tbody>
+        {% for trip in trips %}
+        <tr>
+            <td>{{ trip.city }}</td>
+            <td>{{ trip.travel_date }}</td>
+            <td>{{ trip.forecast }}</td>
+            <td>{{ trip.recommendation }}</td>
+            <td>
+                <a href="{{ url_for('delete_trip', id=trip.id) }}" 
+                   class="btn btn-sm btn-outline-danger" 
+                   onclick="return confirm('Delete this trip?')">
+                   Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

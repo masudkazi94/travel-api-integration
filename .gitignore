@@ -1,0 +1,19 @@
+# Virtual Environment
+v_tp/
+venv/
+ENV/
+
+# Environment Variables (IMPORTANT: Hides your Weather API Key)
+.env
+
+# Database
+instance/
+*.db
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
